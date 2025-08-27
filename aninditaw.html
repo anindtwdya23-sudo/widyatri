@@ -1,0 +1,523 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gunung Gear - Toko Alat Mendaki Terlengkap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        :root {
+            --primary: #2D5016;
+            --secondary: #5A8F29;
+            --accent: #FF6B35;
+            --light: #F8F9FA;
+            --dark: #212529;
+        }
+        
+        body {
+            background-color: #f8fafc;
+            color: var(--dark);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, rgba(45, 80, 22, 0.9), rgba(90, 143, 41, 0.8)), 
+                        url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/48e70a19-a9fd-418e-8645-756047c95d7b.png') center/cover;
+            background-attachment: fixed;
+        }
+        
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .category-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .cart-notification {
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .scale-hover {
+            transition: transform 0.3s ease;
+        }
+        
+        .scale-hover:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-green-700 rounded-full flex items-center justify-center">
+                        <i class="fas fa-mountain text-white text-xl"></i>
+                    </div>
+                    <h1 class="text-xl font-bold text-gray-800">Gunung Gear</h1>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-green-700 font-medium">Beranda</a>
+                    <a href="#products" class="text-gray-700 hover:text-green-700 font-medium">Produk</a>
+                    <a href="#about" class="text-gray-700 hover:text-green-700 font-medium">Tentang</a>
+                    <a href="#contact" class="text-gray-700 hover:text-green-700 font-medium">Kontak</a>
+                </nav>
+                
+                <!-- Cart & Search -->
+                <div class="flex items-center space-x-4">
+                    <div class="hidden md:flex items-center bg-gray-100 rounded-full px-3 py-2">
+                        <i class="fas fa-search text-gray-500"></i>
+                        <input type="text" placeholder="Cari produk..." class="bg-transparent ml-2 outline-none text-sm">
+                    </div>
+                    <button class="relative p-2 text-gray-700 hover:text-green-700">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                    </button>
+                    <button class="md:hidden text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-6xl font-bold mb-6">Petualangan Dimulai Disini</h2>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+                Temukan perlengkapan mendaki terbaik untuk petualangan Anda. Kualitas premium dengan harga terbaik.
+            </p>
+            <div class="space-x-4">
+                <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-semibold transition duration-300 scale-hover">
+                    Belanja Sekarang
+                </button>
+                <button class="border-2 border-white hover:bg-white hover:text-green-800 text-white px-8 py-3 rounded-full font-semibold transition duration-300 scale-hover">
+                    Lihat Katalog
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="bg-white py-12">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center text-gray-800 mb-12">Kategori Produk</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="category-btn bg-gray-100 rounded-lg p-6 text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-hiking text-green-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold">Tenda & Shelter</h4>
+                </div>
+                <div class="category-btn bg-gray-100 rounded-lg p-6 text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tshirt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold">Pakaian</h4>
+                </div>
+                <div class="category-btn bg-gray-100 rounded-lg p-6 text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shoe-prints text-red-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold">Sepatu</h4>
+                </div>
+                <div class="category-btn bg-gray-100 rounded-lg p-6 text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-utensils text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold">Perlengkapan Masak</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="products" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-800 mb-4">Produk Unggulan</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Temukan berbagai perlengkapan mendaki berkualitas tinggi untuk mendukung petualangan Anda
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2cbc3a2e-1f22-4dfd-83e7-fa6d01cc431f.png" alt="Tenda dome outdoor berwarna hijau dengan waterproof coating untuk 4 orang" class="w-full h-48 object-cover">
+                        <div class="absolute top-2 left-2 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                            HOT
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-semibold text-lg mb-2">Tenda Dome 4 Person</h4>
+                        <p class="text-gray-600 text-sm mb-4">Waterproof, tahan angin, mudah dipasang</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-700">Rp 1.250.000</span>
+                            <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-300">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/15ba26ce-faaa-4d39-a684-0d85ecbd85d1.png" alt="Carrier backpack hiking warna hitam dengan banyak kompartemen dan frame aluminium" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-semibold text-lg mb-2">Carrier 60L Expedition</h4>
+                        <p class="text-gray-600 text-sm mb-4">Frame aluminium, waterproof, ergonomis</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-700">Rp 850.000</span>
+                            <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-300">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2fa624f2-05d6-446d-aea1-b069a29c5919.png" alt="Sepatu hiking waterproof warna coklat dengan sol Vibram dan ankle support" class="w-full h-48 object-cover">
+                        <div class="absolute top-2 left-2 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                            NEW
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-semibold text-lg mb-2">Sepatu Hiking Premium</h4>
+                        <p class="text-gray-600 text-sm mb-4">Waterproof, sol Vibram, nyaman</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-700">Rp 680.000</span>
+                            <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-300">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4ff56a9b-0974-4e93-8a71-6554a4471cc6.png" alt="Jaket outdoor anti air warna biru dengan teknologi breathable dan hoodie" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-semibold text-lg mb-2">Jaket Rainproof Outdoor</h4>
+                        <p class="text-gray-600 text-sm mb-4">Waterproof, breathable, ringan</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-700">Rp 320.000</span>
+                            <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-300">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fd93640d-6e72-48e7-bd21-9f30e3e975a4.png" alt="Tim Gunung Gear sedang memeriksa kualitas produk outdoor di gudang penyimpanan" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold text-gray-800 mb-6">Tentang Gunung Gear</h3>
+                    <p class="text-gray-600 mb-4">
+                        Sejak 2015, Gunung Gear telah menjadi mitra terpercaya para petualang Indonesia. 
+                        Kami menyediakan perlengkapan mendaki berkualitas tinggi yang telah teruji di berbagai medan.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        Setiap produk yang kami jual melalui proses seleksi ketat untuk memastikan keamanan, 
+                        kenyamanan, dan daya tahan yang optimal untuk petualangan Anda.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-green-700">5000+</div>
+                            <div class="text-gray-600">Produk Terjual</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-green-700">98%</div>
+                            <div class="text-gray-600">Kepuasan Pelanggan</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center text-gray-800 mb-12">Testimonial Pelanggan</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/201b1231-a294-4155-bca0-6ae54d6edd73.png" alt="Foto profil pelanggan Rudi Santoso dengan senyum ramah" class="w-full h-full rounded-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Rudi Santoso</h4>
+                            <p class="text-green-600 text-sm">Pendaki Gunung Rinjani</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Tenda yang saya beli sangat kokoh menghadapi badai di Rinjani. Kualitas benar-benar premium!"
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/97556eff-49b4-46fe-a617-e118004ba6b5.png" alt="Foto profil pelanggan Sari Wijaya dengan latar belakang pegunungan" class="w-full h-full rounded-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Sari Wijaya</h4>
+                            <p class="text-green-600 text-sm">Travel Blogger</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Pelayanan cepat dan produk original. Carrier nya sangat nyaman untuk trekking panjang."
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e4cfecec-d58b-4636-b791-3b0fb63cb1ca.png" alt="Foto profil pelanggan Ahmad Fauzi dengan pakaian hiking" class="w-full h-full rounded-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Ahmad Fauzi</h4>
+                            <p class="text-green-600 text-sm">Guide Professional</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Sebagai guide, saya sangat merekomendasikan Gunung Gear untuk perlengkapan yang reliable."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-800 mb-4">Hubungi Kami</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Ada pertanyaan tentang produk atau butuh saran untuk perlengkapan mendaki? Tim kami siap membantu Anda.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-gray-700 mb-2">Nama Lengkap</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Pesan</label>
+                            <textarea rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500"></textarea>
+                        </div>
+                        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition duration-300">
+                            Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+                <div>
+                    <div class="bg-gray-50 p-8 rounded-lg">
+                        <h4 class="text-xl font-semibold mb-6">Informasi Kontak</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-green-600 mt-1 mr-4"></i>
+                                <div>
+                                    <p class="font-semibold">Alamat</p>
+                                    <p class="text-gray-600">Jl. letjend suprapto NO. 69 Surakarta, Jawa Tengah</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-phone text-green-600 mt-1 mr-4"></i>
+                                <div>
+                                    <p class="font-semibold">Telepon</p>
+                                    <p class="text-gray-600">+62 857-0266-2741</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope text-green-600 mt-1 mr-4"></i>
+                                <div>
+                                    <p class="font-semibold">Email</p>
+                                    <p class="text-gray-600">anindtwdya23@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-clock text-green-600 mt-1 mr-4"></i>
+                                <div>
+                                    <p class="font-semibold">Jam Operasional</p>
+                                    <p class="text-gray-600">Senin - minggu: 16:00 - 23:00 WIB</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-mountain text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Gunung Gear</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Penyedia perlengkapan mendaki terpercaya sejak 2015. Kualitas terbaik untuk petualangan Anda.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Produk</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Tenda & Shelter</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Carrier & Tas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Sepatu Hiking</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Pakaian Outdoor</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Perlengkapan Masak</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Bantuan</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Cara Belanja</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Panduan Size</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Pengembalian</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Syarat & Ketentuan</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">
+                        Dapatkan info promo dan tips mendaki terbaru
+                    </p>
+                    <div class="flex">
+                        <input type="email" placeholder="Email Anda" class="bg-gray-700 text-white px-4 py-2 rounded-l-lg w-full outline-none">
+                        <button class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>© 2024 Gunung Gear. All rights reserved. by: Anindita</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Notification -->
+    <div id="cart-notification" class="fixed top-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 hidden cart-notification">
+        Produk berhasil ditambahkan ke keranjang!
+    </div>
+
+    <script>
+        // Simple cart functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartButtons = document.querySelectorAll('.product-card button');
+            const cartCount = document.querySelector('.fa-shopping-cart').nextElementSibling;
+            const cartNotification = document.getElementById('cart-notification');
+            
+            let cartItems = 0;
+            
+            cartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    cartItems++;
+                    cartCount.textContent = cartItems;
+                    
+                    // Show notification
+                    cartNotification.classList.remove('hidden');
+                    
+                    // Hide notification after 3 seconds
+                    setTimeout(() => {
+                        cartNotification.classList.add('hidden');
+                    }, 3000);
+                });
+            });
+            
+            // Smooth scroll for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
